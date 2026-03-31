@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #f59e0b; /* Gold */
+  --color-primary-foreground: #080808;
+  --color-secondary: #121212;
+  --color-secondary-foreground: #fafafa;
+  --color-accent: #fbbf24;
+  --color-accent-foreground: #080808;
+  --color-muted: #262626;
+  --color-muted-foreground: #a3a3a3;
+  --color-border: #1a1a1a;
+  --color-input: #1a1a1a;
+  --color-ring: #f59e0b;
+
+  --radius: 0.5rem;
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #050505;
+  --foreground: #fafafa;
+  --color-border: #1a1a1a;
+  --color-muted: #262626;
+  --color-secondary: #0f0f0f;
+  --color-secondary-foreground: #fafafa;
+}
+
+/* Fallback for system settings if needed, but we force dark above */
+.light {
+  --background: #ffffff;
+  --foreground: #080808;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Utilities */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.dark .glass {
+  @apply bg-slate-900/70 border-slate-800/50;
+}
+
+.section-padding {
+  @apply py-12 md:py-24;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
